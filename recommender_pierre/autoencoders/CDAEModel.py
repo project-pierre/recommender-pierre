@@ -54,7 +54,6 @@ class CDAEModel(BaseModel):
             self.factors, kernel_regularizer=l2(self.reg), bias_regularizer=l2(self.reg), activation=self.activation,
             name="Dense_1"
         )(h_item)
-
         # dtype should be int to connect to Embedding layer
         x_user = Input((1,), name='UserContent')
         h_user = Embedding(
@@ -65,9 +64,6 @@ class CDAEModel(BaseModel):
 
         h = add([h_item, h_user], name='LatentSpace')
         y = Dense(X.shape[1], activation='linear', name='UserScorePred')(h)
-        print(x_item)
-        print(x_user)
-        print(y)
 
         return Model(inputs=[x_item, x_user], outputs=y, name="Model_Final")
 
@@ -75,7 +71,7 @@ class CDAEModel(BaseModel):
         # Build model
         model = self.build_model(X)
 
-        model.compile(optimizer=Adam(lr=self.lr), loss=self.loss)  # 'mean_absolute_error'
+        model.compile(optimizer=Adam(learning_rate=self.lr), loss=self.loss)  # 'mean_absolute_error'
         users_ids = list(self.user_item_matrix.index)
         # train
         hist = model.fit(
