@@ -98,7 +98,7 @@ setup(
     description="Recommender-Pierre is a Scientific ToolKit for Collaborative Recommender Algorithms.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/scikit-pierre/scikit-pierre",
+    url="https://github.com/project-pierre/recommender-pierre",
     author="Diego Correa da Silva",
     author_email="diegocorrea.cc@gmail.com",
     license="MIT",

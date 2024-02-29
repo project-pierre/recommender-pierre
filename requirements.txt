@@ -1,5 +1,0 @@
-pandas
-numpy
-tensorflow
-setuptools
-cython
