@@ -12,11 +12,10 @@ from .BaseModel import BaseModel
 class CDAEModel(BaseModel):
     """
     create model
-    Reference:
-    KUCHAIEV, Oleksii; GINSBURG, Boris. Training deep autoencoders for collaborative filtering.
-        arXiv preprint arXiv:1708.01715, 2017.
-            https://github.com/NVIDIA/DeepRecommender
-            https://arxiv.org/pdf/1708.01715.pdf
+      Reference:
+        Yao Wu, Christopher DuBois, Alice X. Zheng, Martin Ester.
+          Collaborative Denoising Auto-Encoders for Top-N Recommender Systems.
+            The 9th ACM International Conference on Web Search and Data Mining (WSDM'16), p153--162, 2016.
     """
 
     def __init__(
