@@ -1,4 +1,4 @@
 #!/bin/sh
 
-python setup.py sdist build
-python setup.py bdist_wheel --universal
+python setup.py build_ext --inplace
+python3 setup.py sdist bdist_wheel

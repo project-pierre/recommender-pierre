@@ -51,6 +51,11 @@ extensions = [
         sources=["recommender_pierre/autoencoders/CDAEModel" + ext],
         include_dirs=[np.get_include()]
     ),
+    Extension(
+        name="recommender_pierre.autoencoders.EASEModel",
+        sources=["recommender_pierre/autoencoders/EASEModel" + ext],
+        include_dirs=[np.get_include()]
+    ),
 ]
 
 EXCLUDE_FILES = [

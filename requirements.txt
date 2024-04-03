@@ -3,3 +3,5 @@ numpy
 tensorflow
 setuptools
 cython
+scipy
+scikit-learn

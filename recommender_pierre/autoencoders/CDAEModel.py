@@ -12,18 +12,24 @@ from .BaseModel import BaseModel
 class CDAEModel(BaseModel):
     """
     create model
-      Reference:
-        Yao Wu, Christopher DuBois, Alice X. Zheng, Martin Ester.
-          Collaborative Denoising Auto-Encoders for Top-N Recommender Systems.
-            The 9th ACM International Conference on Web Search and Data Mining (WSDM'16), p153--162, 2016.
+
+    Reference:
+    Yao Wu, Christopher DuBois, Alice X. Zheng, and Martin Ester. 2016.
+    Collaborative Denoising Auto-Encoders for Top-N Recommender Systems.
+    In Proceedings of the Ninth ACM International Conference on Web Search and Data Mining
+    (WSDM '16).
+    Association for Computing Machinery, New York, NY, USA, 153–162.
+    https://doi.org/10.1145/2835776.2835837
     """
 
     def __init__(
             self,
-            factors: int = 15, epochs: int = 100, batch: int = 64, activation: str = 'selu', dropout: float = 0.1,
+            factors: int = 15, epochs: int = 100, batch: int = 64, activation: str = 'selu',
+            dropout: float = 0.1,
             lr: float = 0.0001, reg: float = 0.01, loss: str = 'mse', validation_split: float = 0.3,
             list_size: int = 10,
-            user_label: str = "USER_ID", item_label: str = "ITEM_ID", transaction_label: str = "TRANSACTION_VALUE",
+            user_label: str = "USER_ID", item_label: str = "ITEM_ID",
+            transaction_label: str = "TRANSACTION_VALUE",
             path_model: str = "/tmp/weights-best-model.hdf5"
     ):
         self.factors = factors
