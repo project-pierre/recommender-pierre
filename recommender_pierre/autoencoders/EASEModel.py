@@ -73,7 +73,7 @@ class EASEModel:
         self.pred = self.X.dot(self.B)
 
     def predict(self, train: DataFrame, users: list, items: list, k: int = 10):
-        items = self.item_enc.transform(items)
+        items = list(self.item_enc.transform(items))
         dd = train.loc[train[self.user_label].isin(users)]
         dd['ci'] = self.item_enc.transform(dd[self.item_label])
         dd['cu'] = self.user_enc.transform(dd[self.user_label])
@@ -90,7 +90,7 @@ class EASEModel:
             self.recommendations[self.user_label])
         return self.recommendations
 
-    def predict_for_user(self, user: str, group: DataFrame, pred: DataFrame, items: list, k: int):
+    def predict_for_user(self, user, group: DataFrame, pred: DataFrame, items: list, k: int):
         watched = set(group['ci'])
         candidates = [item for item in items if item not in watched]
         pred = np.take(pred, candidates)
