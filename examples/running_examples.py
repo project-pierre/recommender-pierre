@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 np.object = object
 
-from recommender_pierre.autoencoders.AutoEncModel import AutoEncModel
+from recommender_pierre.autoencoders.DeppAutoEncModel import DeppAutoEncModel
 from recommender_pierre.autoencoders.CDAEModel import CDAEModel
 from recommender_pierre.autoencoders.EASEModel import EASEModel
 
@@ -17,7 +17,7 @@ cdae_model = CDAEModel(
 cdae_rec_list_df = cdae_model.train_and_produce_rec_list(user_transactions_df=df)
 cdae_rec_list_df.head(30)
 
-auto_model = AutoEncModel(
+auto_model = DeppAutoEncModel(
     user_label="user_id", item_label="content_id", transaction_label="view",
     path_model="/home/diego/Code/recommender-pierre/examples/model_params/weights-best-model.keras"
 )

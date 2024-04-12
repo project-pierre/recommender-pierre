@@ -6,7 +6,7 @@ from tensorflow.keras.optimizers import Adam
 from .BaseModel import BaseModel
 
 
-class AutoEncModel(BaseModel):
+class DeppAutoEncModel(BaseModel):
     """
     create model
     Reference:

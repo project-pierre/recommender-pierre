@@ -42,8 +42,8 @@ ext = ".py" if USE_CYTHON else ".c"
 
 extensions = [
     Extension(
-        name="recommender_pierre.autoencoders.AutoEncModel",
-        sources=["recommender_pierre/autoencoders/AutoEncModel" + ext],
+        name="recommender_pierre.autoencoders.DeppAutoEncModel",
+        sources=["recommender_pierre/autoencoders/DeppAutoEncModel" + ext],
         include_dirs=[np.get_include()]
     ),
     Extension(
