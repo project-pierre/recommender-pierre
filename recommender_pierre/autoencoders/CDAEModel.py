@@ -30,7 +30,7 @@ class CDAEModel(BaseModel):
             list_size: int = 10,
             user_label: str = "USER_ID", item_label: str = "ITEM_ID",
             transaction_label: str = "TRANSACTION_VALUE",
-            path_model: str = "/tmp/weights-best-model.hdf5"
+            path_model: str = "/tmp/weights-best-model.keras"
     ):
         self.factors = factors
         self.epochs = epochs
