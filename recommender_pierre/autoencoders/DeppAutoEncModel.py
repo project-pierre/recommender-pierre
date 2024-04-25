@@ -22,7 +22,7 @@ class DeppAutoEncModel(BaseModel):
             lr: float = 0.0001, reg: float = 0.01, loss: str = 'mse', validation_split: float = 0.3,
             list_size: int = 10,
             user_label: str = "USER_ID", item_label: str = "ITEM_ID", transaction_label: str = "TRANSACTION_VALUE",
-            path_model: str = "/tmp/weights-best-model.keras"
+            path_model: str = "/tmp/weights-best-model.hdf5"
     ):
         self.factors = factors
         self.epochs = epochs
@@ -79,7 +79,8 @@ class DeppAutoEncModel(BaseModel):
         hist = model.fit(
             x=X, y=y,
             epochs=self.epochs, batch_size=self.batch, shuffle=True,
-            validation_split=self.validation_split, callbacks=self.callbacks_list(path_model=self.path_model)
+            validation_split=self.validation_split,
+            callbacks=self.callbacks_list(path_model=self.path_model)
         )
 
         model.load_weights(self.path_model)
