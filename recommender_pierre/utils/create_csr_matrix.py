@@ -1,7 +1,7 @@
 from scipy.sparse import csr_matrix
 
 
-def create_matrix(data, users_col, items_col, ratings_col, threshold=None):
+def create_matrix(data, users_col, items_col, ratings_col):
     """
     creates the sparse user-item interaction matrix,
     if the data is not in the format where the interaction only
@@ -22,10 +22,6 @@ def create_matrix(data, users_col, items_col, ratings_col, threshold=None):
     ratings_col : str
         implicit rating column name
 
-    threshold : int, default None
-        threshold to determine whether the user-item pair is
-        a positive feedback
-
     Returns
     -------
     ratings : scipy sparse csr_matrix, shape [n_users, n_items]
@@ -35,10 +31,6 @@ def create_matrix(data, users_col, items_col, ratings_col, threshold=None):
         implict rating data that retains only the positive feedback
         (if specified to do so)
     """
-    if threshold is not None:
-        data = data[data[ratings_col] >= threshold]
-        data[ratings_col] = 1
-
     # this ensures each user has at least 2 records to construct a valid
     # train and test split in downstream process, note we might purge
     # some users completely during this process

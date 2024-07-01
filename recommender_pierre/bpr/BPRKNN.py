@@ -1,13 +1,10 @@
 import sys
 import numpy as np
 import pandas as pd
-from math import ceil
 from tqdm import trange
-from subprocess import call
 from itertools import islice
 from sklearn.preprocessing import normalize
 from sklearn.neighbors import NearestNeighbors
-from scipy.sparse import csr_matrix, dok_matrix
 
 from recommender_pierre.utils.create_csr_matrix import create_matrix
 
@@ -59,7 +56,7 @@ class BPRKNN:
 
     def __init__(
             self, learning_rate=0.01, factors=15, iterations=10,
-            batch_size=1000, regularization=0.01, seed=42, threshold=0, verbose=True,
+            batch_size=1000, regularization=0.01, seed=42, verbose=True,
             user_label: str = "USER_ID", item_label: str = "ITEM_ID",
             transaction_label: str = "TRANSACTION_VALUE", list_size=10
     ):
@@ -74,7 +71,6 @@ class BPRKNN:
         self.item_label = item_label
         self.transaction_label = transaction_label
         self.list_size = list_size
-        self.threshold = threshold
 
         # to avoid re-computation at predict
         self._prediction = None
@@ -321,7 +317,7 @@ class BPRKNN:
     def train_and_produce_rec_list(self, user_transactions_df):
         user_transactions_df.sort_values(self.user_label, inplace=True)
         X_train, train_df = create_matrix(
-            user_transactions_df, self.user_label, self.item_label, self.transaction_label, self.threshold
+            user_transactions_df, self.user_label, self.item_label, self.transaction_label
         )
 
         self.fit(X_train)

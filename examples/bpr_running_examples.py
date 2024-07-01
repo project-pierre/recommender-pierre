@@ -11,7 +11,6 @@ train_df = train_df[['user_id', 'content_id', 'view']]
 items_col = 'content_id'
 users_col = 'user_id'
 ratings_col = 'view'
-threshold = 0
 
 bpr_params = {
     'regularization': 0.01,
