@@ -56,11 +56,17 @@ extensions = [
         sources=["recommender_pierre/autoencoders/EASEModel" + ext],
         include_dirs=[np.get_include()]
     ),
+    Extension(
+        name="recommender_pierre.bpr.BPRKNN",
+        sources=["recommender_pierre/bpr/BPRKNN" + ext],
+        include_dirs=[np.get_include()]
+    ),
 ]
 
 EXCLUDE_FILES = [
     "recommender_pierre/__init__.py",
-    "recommender_pierre/autoencoders/__init__.py"
+    "recommender_pierre/autoencoders/__init__.py",
+    "recommender_pierre/bpr/__init__.py"
 ]
 
 
