@@ -61,6 +61,11 @@ extensions = [
         sources=["recommender_pierre/bpr/BPRKNN" + ext],
         include_dirs=[np.get_include()]
     ),
+    Extension(
+        name="recommender_pierre.bpr.BPRGRAPH",
+        sources=["recommender_pierre/bpr/BPRGRAPH" + ext],
+        include_dirs=[np.get_include()]
+    ),
 ]
 
 EXCLUDE_FILES = [
