@@ -66,6 +66,16 @@ extensions = [
         sources=["recommender_pierre/bpr/BPRGRAPH" + ext],
         include_dirs=[np.get_include()]
     ),
+    Extension(
+        name="recommender_pierre.baselines.Random",
+        sources=["recommender_pierre/baselines/Random" + ext],
+        include_dirs=[np.get_include()]
+    ),
+    Extension(
+        name="recommender_pierre.baselines.Popularity",
+        sources=["recommender_pierre/baselines/Popularity" + ext],
+        include_dirs=[np.get_include()]
+    ),
 ]
 
 EXCLUDE_FILES = [
