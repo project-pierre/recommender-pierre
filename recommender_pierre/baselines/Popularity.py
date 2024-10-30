@@ -91,4 +91,5 @@ class PopularityRecommender:
         self.set_items_ids(items_ids=list(user_transactions_df[self.item_label].unique()))
         self.compute_popularity()
 
-        return self.recommend_for_all(user_transactions_df=user_transactions_df)
+        recommendations = self.recommend_for_all(user_transactions_df=user_transactions_df)
+        return recommendations.rename(columns={self.popularity_label: self.transaction_label})

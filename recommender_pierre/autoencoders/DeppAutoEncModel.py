@@ -1,7 +1,17 @@
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+# tf.config.run_functions_eagerly(True)
 import pandas as pd
 from tensorflow.keras.layers import Input, Dense, Dropout
 from tensorflow.keras.models import Model
 from tensorflow.keras.optimizers import Adam
+# import tensorflow as tf # V2.x
+# print(tf.disable_v2_behavior())
+# print(tf.executing_eagerly())
+
+# print(tf.compat.v1.enable_eager_execution())
+
+
 
 from .BaseModel import BaseModel
 
@@ -73,7 +83,7 @@ class DeppAutoEncModel(BaseModel):
         # Build model
         model = self.build_model(X)
 
-        model.compile(optimizer=Adam(lr=self.lr), loss=self.loss)  # 'mean_absolute_error'
+        model.compile(optimizer=tf.compat.v1.train.AdamOptimizer(learning_rate=self.lr), loss=self.loss)  # 'mean_absolute_error'
 
         # train
         hist = model.fit(
