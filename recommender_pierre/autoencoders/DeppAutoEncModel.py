@@ -1,17 +1,8 @@
-import tensorflow.compat.v1 as tf
-tf.disable_v2_behavior()
-# tf.config.run_functions_eagerly(True)
 import pandas as pd
-from tensorflow.keras.layers import Input, Dense, Dropout
-from tensorflow.keras.models import Model
-from tensorflow.keras.optimizers import Adam
-# import tensorflow as tf # V2.x
-# print(tf.disable_v2_behavior())
-# print(tf.executing_eagerly())
-
-# print(tf.compat.v1.enable_eager_execution())
-
-
+from keras.layers import Input, Dense, Dropout
+from keras.models import Model
+from keras.optimizers import Adam
+# from tensorflow.keras.optimizers.legacy import Adam
 
 from .BaseModel import BaseModel
 
@@ -58,7 +49,7 @@ class DeppAutoEncModel(BaseModel):
         """
 
         # Input
-        input_layer = Input(shape=(X.shape[1],), name='UserScore')
+        input_layer = Input(shape=(int(X.shape[1]),), name='UserScore')
 
         # Encoder
         # -----------------------------
@@ -74,7 +65,7 @@ class DeppAutoEncModel(BaseModel):
         dec = Dense(512, activation=self.activation, name='DecLayer1')(lat_space)
 
         # Output
-        output_layer = Dense(X.shape[1], activation='linear', name='UserScorePred')(dec)
+        output_layer = Dense(int(X.shape[1]), activation='linear', name='UserScorePred')(dec)
 
         # This model maps an input to its reconstruction
         return Model(input_layer, output_layer)
@@ -83,7 +74,9 @@ class DeppAutoEncModel(BaseModel):
         # Build model
         model = self.build_model(X)
 
-        model.compile(optimizer=tf.compat.v1.train.AdamOptimizer(learning_rate=self.lr), loss=self.loss)  # 'mean_absolute_error'
+        # model.compile(optimizer=tf.compat.v1.train.AdamOptimizer(learning_rate=self.lr), loss=self.loss)  # 'mean_squared_error'
+        # model.compile(loss=self.loss)  # 'mean_squared_error'
+        model.compile(optimizer=Adam(learning_rate=self.lr), loss=self.loss)  # 'mean_squared_error'
 
         # train
         hist = model.fit(

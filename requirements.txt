@@ -1,7 +1,8 @@
 pandas
 numpy
-tensorflow
+tensorflow-cpu
 setuptools
 cython
 scipy
 scikit-learn
+tdqm

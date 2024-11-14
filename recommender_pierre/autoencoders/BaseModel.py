@@ -1,4 +1,4 @@
-from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping
+from keras.callbacks import ModelCheckpoint, EarlyStopping
 
 
 class BaseModel(object):

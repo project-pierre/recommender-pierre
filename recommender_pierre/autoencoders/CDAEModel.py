@@ -1,10 +1,10 @@
 import numpy as np
 import pandas as pd
-from tensorflow.keras.layers import Input, Dense, Embedding, Flatten, Dropout
-from tensorflow.keras.layers import add
-from tensorflow.keras.models import Model
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.regularizers import l2
+from keras.layers import Input, Dense, Embedding, Flatten, Dropout
+from keras.layers import add
+from keras.models import Model
+from keras.optimizers import Adam
+from keras.regularizers import l2
 
 from .BaseModel import BaseModel
 
