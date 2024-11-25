@@ -1,8 +1,7 @@
 import pandas as pd
-from keras.layers import Input, Dense, Dropout
-from keras.models import Model
-from keras.optimizers import Adam
-# from tensorflow.keras.optimizers.legacy import Adam
+from tensorflow.keras.layers import Input, Dense, Dropout
+from tensorflow.keras.models import Model
+from tensorflow.keras.optimizers import Adam
 
 from .BaseModel import BaseModel
 
@@ -74,9 +73,7 @@ class DeppAutoEncModel(BaseModel):
         # Build model
         model = self.build_model(X)
 
-        # model.compile(optimizer=tf.compat.v1.train.AdamOptimizer(learning_rate=self.lr), loss=self.loss)  # 'mean_squared_error'
-        # model.compile(loss=self.loss)  # 'mean_squared_error'
-        model.compile(optimizer=Adam(learning_rate=self.lr), loss=self.loss)  # 'mean_squared_error'
+        model.compile(optimizer=Adam(lr=self.lr), loss=self.loss)  # 'mean_squared_error'
 
         # train
         hist = model.fit(

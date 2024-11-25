@@ -1,8 +1,8 @@
 from .autoencoders import DeppAutoEncModel
 from .autoencoders import CDAEModel
 from .autoencoders import EASEModel
-from .bpr import BPRKNN
-from .bpr import BPRGRAPH
+# from .bpr import BPRKNN
+# from .bpr import BPRGRAPH
 from .baselines import Popularity
 from .baselines import Random
 
@@ -12,8 +12,8 @@ __all__ = [
     "DeppAutoEncModel",
     "CDAEModel",
     "EASEModel",
-    "BPRKNN",
-    "BPRGRAPH",
+    # "BPRKNN",
+    # "BPRGRAPH",
     "Popularity",
     "Random",
     "__version__"
